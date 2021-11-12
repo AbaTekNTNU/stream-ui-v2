@@ -1,0 +1,11 @@
+.scoreContainer {
+  position: absolute;
+
+  bottom: 5%;
+  left: 5%;
+
+  width: 400px;
+  height: 150px;
+
+  background-color: lightgray;
+}

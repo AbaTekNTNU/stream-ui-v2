@@ -28,6 +28,10 @@ const initialState: ScoreState = {
     home: 0,
     away: 0,
   },
+  teamName: {
+    home: "",
+    away: "",
+  },
   clock: {
     period: "1",
     secondsRemaining: 600,
