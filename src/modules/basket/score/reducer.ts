@@ -1,9 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type Team = {
+  name: string;
+};
 export interface ScoreState {
   score: {
     home: number;
     away: number;
+  };
+  teams: {
+    home: Team;
+    away: Team;
   };
   clock: {
     secondsRemaining: number;
@@ -28,9 +35,13 @@ const initialState: ScoreState = {
     home: 0,
     away: 0,
   },
-  teamName: {
-    home: "",
-    away: "",
+  teams: {
+    home: {
+      name: "NID",
+    },
+    away: {
+      name: "MID",
+    },
   },
   clock: {
     period: "1",

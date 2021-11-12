@@ -12,7 +12,10 @@ const ScoreView: React.FC = () => {
 
   const scoreApplication = (
     <div>
-      <Score home={scoreState.score.home} away={scoreState.score.away}></Score>
+      <Score
+        home={{ name: "NID", score: scoreState.score.home }}
+        away={{ name: "AWY", score: scoreState.score.away }}
+      ></Score>
       Hjemme: {scoreState.score.home}
       Borte: {scoreState.score.away}
       Periode: {scoreState.clock.period}
