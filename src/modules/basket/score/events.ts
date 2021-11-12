@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { AbaTekStreamingEvent, AbaTekStreamingModule } from "../../../types";
+import { AbaTekStreamingEvent } from "../../../types";
 import { hideScore, setScore, showScore } from "./reducer";
 
 enum AbatekMessage {
@@ -12,10 +12,16 @@ enum ScoreEventControlMessages {
   CLOCK_VISIBILITY = "clock_visibility",
 }
 
-enum ScoreEventControlPayload {
-  SHOW,
-  HIDE,
+enum ScoreEventApplicationMessage {
+  START_CLOCK = "clock.start",
+  STOP_CLOCK = "clock.stop",
+  UPDATE_SCORE = "scoreUpdate",
 }
+
+// enum ScoreEventControlPayload {
+//   SHOW,
+//   HIDE,
+// }
 
 const handleScoreVisibility = (
   event: AbaTekStreamingEvent,
@@ -40,16 +46,13 @@ const handleScoreUpdateEvent = (
   );
 };
 
-export const handleScoreEvent = (
+const handleScoreApplicationMessage = (
   event: AbaTekStreamingEvent,
   dispatch: Dispatch
 ) => {
-  switch ((event as any).payload.type) {
-    case AbatekMessage.APPLICATION:
+  switch ((event as any).payload.event) {
+    case ScoreEventApplicationMessage.UPDATE_SCORE:
       handleScoreUpdateEvent(event, dispatch);
-      break;
-    case AbatekMessage.CONTROL:
-      handleScoreControllMessage(event, dispatch);
       break;
   }
 };
@@ -61,6 +64,20 @@ export const handleScoreControllMessage = (
   switch ((event as any).payload.control) {
     case ScoreEventControlMessages.SCORE_VISIBILITY:
       handleScoreVisibility(event, dispatch);
+      break;
+  }
+};
+
+export const handleScoreEvent = (
+  event: AbaTekStreamingEvent,
+  dispatch: Dispatch
+) => {
+  switch ((event as any).payload.type) {
+    case AbatekMessage.APPLICATION:
+      handleScoreApplicationMessage(event, dispatch);
+      break;
+    case AbatekMessage.CONTROL:
+      handleScoreControllMessage(event, dispatch);
       break;
   }
 };

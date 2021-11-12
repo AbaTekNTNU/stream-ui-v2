@@ -27,7 +27,7 @@ const initialState: ScoreState = {
     period: 1,
     secondsRemaining: 600,
   },
-  scoreVisible: false,
+  scoreVisible: true,
   clockVisible: false,
 };
 
