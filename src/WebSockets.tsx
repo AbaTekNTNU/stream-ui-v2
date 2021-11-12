@@ -10,6 +10,8 @@ const WebSockets: React.FC = () => {
 
   useWebSocket(wsUrl, {
     onMessage: (event: MessageEvent<string>) => {
+      console.log("got message");
+      console.log(event.data);
       handleEvent(event, dispatch);
     },
   });

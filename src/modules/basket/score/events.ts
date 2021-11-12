@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { AbaTekStreamingEvent } from "../../../types";
-import { hideScore, setScore, showScore } from "./reducer";
+import { correctTime, hideScore, setScore, showScore } from "./reducer";
 
 enum AbatekMessage {
   CONTROL = "control",
@@ -16,6 +16,7 @@ enum ScoreEventApplicationMessage {
   START_CLOCK = "clock.start",
   STOP_CLOCK = "clock.stop",
   UPDATE_SCORE = "scoreUpdate",
+  CLOCK_CORRECITON = "clockCorrection",
 }
 
 // enum ScoreEventControlPayload {
@@ -46,6 +47,18 @@ const handleScoreUpdateEvent = (
   );
 };
 
+const handleClockCorrection = (
+  event: AbaTekStreamingEvent,
+  dispatch: Dispatch
+) => {
+  dispatch(
+    correctTime({
+      secondsRemaining: (event as any).payload.remainingSeconds,
+      period: (event as any).payload.period,
+    })
+  );
+};
+
 const handleScoreApplicationMessage = (
   event: AbaTekStreamingEvent,
   dispatch: Dispatch
@@ -53,6 +66,9 @@ const handleScoreApplicationMessage = (
   switch ((event as any).payload.event) {
     case ScoreEventApplicationMessage.UPDATE_SCORE:
       handleScoreUpdateEvent(event, dispatch);
+      break;
+    case ScoreEventApplicationMessage.CLOCK_CORRECITON:
+      handleClockCorrection(event, dispatch);
       break;
   }
 };
