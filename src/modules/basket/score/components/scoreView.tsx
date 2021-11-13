@@ -8,6 +8,9 @@ const ScoreView: React.FC = () => {
   const scoreState = useSelector((state: RootState) => state.score);
   const logoGender = useSelector((state: RootState) => state.firiLogo.gender);
   const showClock = useSelector((state: RootState) => state.score.clockVisible);
+  const currentPeriod = useSelector(
+    (state: RootState) => state.score.clock.period
+  );
 
   const scoreApplication = (
     <div>
@@ -21,6 +24,7 @@ const ScoreView: React.FC = () => {
           score: scoreState.score.away,
         }}
         logoGender={logoGender}
+        period={currentPeriod}
       ></Score>
       {showClock && <Clock />}
     </div>

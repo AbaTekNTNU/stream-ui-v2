@@ -13,9 +13,10 @@ type Props = {
   home: TeamData;
   away: TeamData;
   logoGender: FiriLogoGender;
+  period: string | number;
 };
 
-const Score = ({ home, away, logoGender }: Props) => {
+const Score = ({ home, away, logoGender, period }: Props) => {
   const logo =
     logoGender === FiriLogoGender.MEN ? scoreLogoMen : scoreLogoWomen;
 
@@ -39,7 +40,7 @@ const Score = ({ home, away, logoGender }: Props) => {
         <div className={styles.periodWrapper}>
           <span className={styles.periodText}>PERIODE</span>
           <div className={styles.periodDataWrapper}>
-            <span className={styles.periodDataText}>1</span>
+            <span className={styles.periodDataText}>{period}</span>
           </div>
         </div>
       </div>
