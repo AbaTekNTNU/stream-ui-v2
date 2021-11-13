@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import scoreReducer from "../modules/basket/score/reducer";
+import firiLogoReducer from "../modules/basket/firilogo/reducer";
 
 export const store = configureStore({
   reducer: {
     score: scoreReducer,
+    firiLogo: firiLogoReducer,
   },
 });
 

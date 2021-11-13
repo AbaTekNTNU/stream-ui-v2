@@ -1,6 +1,12 @@
 import { Dispatch } from "redux";
 import { AbaTekStreamingEvent, AbaTekStreamingEventType } from "../../types";
+import { handleFiriLogoEvent } from "./firilogo/events";
 import { handleScoreEvent } from "./score/events";
+
+export enum AbatekMessage {
+  CONTROL = "control",
+  APPLICATION = "application",
+}
 
 export const handleBasketEvent = (
   event: AbaTekStreamingEvent,
@@ -9,6 +15,9 @@ export const handleBasketEvent = (
   switch (event.type) {
     case AbaTekStreamingEventType.SCORE:
       handleScoreEvent(event, dispatch);
+      break;
+    case AbaTekStreamingEventType.FIRI_LOGO_EVENT:
+      handleFiriLogoEvent(event, dispatch);
       break;
   }
 };

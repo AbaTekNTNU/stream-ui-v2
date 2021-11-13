@@ -1,11 +1,7 @@
 import { Dispatch } from "redux";
 import { AbaTekStreamingEvent } from "../../../types";
+import { AbatekMessage } from "../events";
 import { correctTime, hideScore, setScore, showScore } from "./reducer";
-
-enum AbatekMessage {
-  CONTROL = "control",
-  APPLICATION = "application",
-}
 
 enum ScoreEventControlMessages {
   SCORE_VISIBILITY = "score_visibility",

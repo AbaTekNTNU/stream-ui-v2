@@ -9,16 +9,21 @@ const getUiTime = (secondsRemainging: number): string => {
 
 const ScoreView: React.FC = () => {
   const scoreState = useSelector((state: RootState) => state.score);
+  const logoGender = useSelector((state: RootState) => state.firiLogo.gender);
 
   const scoreApplication = (
     <div>
       <Score
-        home={{ name: "NID", score: scoreState.score.home }}
-        away={{ name: "AWY", score: scoreState.score.away }}
+        home={{
+          name: scoreState.teams.home.name,
+          score: scoreState.score.home,
+        }}
+        away={{
+          name: scoreState.teams.away.name,
+          score: scoreState.score.away,
+        }}
+        logoGender={logoGender}
       ></Score>
-      Hjemme: {scoreState.score.home}
-      Borte: {scoreState.score.away}
-      Periode: {scoreState.clock.period}
       Tid: {getUiTime(scoreState.clock.secondsRemaining)}
     </div>
   );

@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Score.module.css";
-import scoreLogo from "./../assets/score_logo.png";
+import scoreLogoMen from "./../assets/score_logo_men.png";
+import scoreLogoWomen from "./../assets/score_logo_women.png";
+import { FiriLogoGender } from "../../firilogo/reducer";
 
 export type TeamData = {
   name: string;
@@ -10,9 +12,13 @@ export type TeamData = {
 type Props = {
   home: TeamData;
   away: TeamData;
+  logoGender: FiriLogoGender;
 };
 
-const Score = ({ home, away }: Props) => {
+const Score = ({ home, away, logoGender }: Props) => {
+  const logo =
+    logoGender === FiriLogoGender.MEN ? scoreLogoMen : scoreLogoWomen;
+
   return (
     <div className={styles.scoreContainer}>
       <div className={styles.topWrapper}>
@@ -28,7 +34,7 @@ const Score = ({ home, away }: Props) => {
       <div className={styles.divider}></div>
       <div className={styles.bottomWrapper}>
         <div className={styles.logoWrapper}>
-          <img className={styles.scoreLogo} src={scoreLogo} />
+          <img className={styles.scoreLogo} src={logo} />
         </div>
         <div className={styles.periodWrapper}>
           <span className={styles.periodText}>PERIODE</span>
