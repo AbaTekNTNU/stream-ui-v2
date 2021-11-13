@@ -3,6 +3,7 @@ import styles from "./Score.module.css";
 import scoreLogoMen from "./../assets/score_logo_men.png";
 import scoreLogoWomen from "./../assets/score_logo_women.png";
 import { FiriLogoGender } from "../../firilogo/reducer";
+import Clock from "./Clock/Clock";
 
 export type TeamData = {
   name: string;
@@ -14,9 +15,10 @@ type Props = {
   away: TeamData;
   logoGender: FiriLogoGender;
   period: string | number;
+  showClock: boolean;
 };
 
-const Score = ({ home, away, logoGender, period }: Props) => {
+const Score = ({ home, away, logoGender, period, showClock }: Props) => {
   const logo =
     logoGender === FiriLogoGender.MEN ? scoreLogoMen : scoreLogoWomen;
 
@@ -37,6 +39,7 @@ const Score = ({ home, away, logoGender, period }: Props) => {
         <div className={styles.logoWrapper}>
           <img className={styles.scoreLogo} src={logo} />
         </div>
+        <div className={styles.clockWrapper}>{showClock && <Clock />}</div>
         <div className={styles.periodWrapper}>
           <span className={styles.periodText}>PERIODE</span>
           <div className={styles.periodDataWrapper}>

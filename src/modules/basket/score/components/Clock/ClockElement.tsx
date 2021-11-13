@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./ClockElement.module.css";
 
 const addHeadingZero = (num: number): string => {
   if (num < 10) {
@@ -20,9 +21,7 @@ type ClockEventProps = {
 
 const ClockElement: React.FC<ClockEventProps> = ({ secondsRemaining }) => {
   return (
-    <div>
-      <span>{getUiTime(secondsRemaining)}</span>
-    </div>
+    <span className={styles.clockText}>{getUiTime(secondsRemaining)}</span>
   );
 };
 

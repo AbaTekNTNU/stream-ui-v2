@@ -25,8 +25,8 @@ const ScoreView: React.FC = () => {
         }}
         logoGender={logoGender}
         period={currentPeriod}
+        showClock={showClock}
       ></Score>
-      {showClock && <Clock />}
     </div>
   );
 
