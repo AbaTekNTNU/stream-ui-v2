@@ -15,6 +15,7 @@ type TeamState = {
   home: TeamDetail;
   away: TeamDetail;
   showGameSummary: boolean;
+  showTeamPresentation: boolean;
 };
 const initialState: TeamState = {
   home: {
@@ -30,6 +31,7 @@ const initialState: TeamState = {
     coaches: [],
   },
   showGameSummary: false,
+  showTeamPresentation: true,
 };
 
 const teamReducer = createSlice({
