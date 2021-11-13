@@ -1,7 +1,16 @@
 import { Dispatch } from "redux";
 import { AbaTekStreamingEvent } from "../../../types";
 import { AbatekMessage } from "../events";
-import { correctTime, hideScore, setScore, showScore } from "./reducer";
+import {
+  correctTime,
+  hideClock,
+  hideScore,
+  setScore,
+  showClock,
+  showScore,
+  startClock,
+  stopClock,
+} from "./reducer";
 
 enum ScoreEventControlMessages {
   SCORE_VISIBILITY = "score_visibility",
@@ -28,6 +37,17 @@ const handleScoreVisibility = (
     dispatch(showScore());
   } else {
     dispatch(hideScore());
+  }
+};
+
+const handleClockVisibility = (
+  event: AbaTekStreamingEvent,
+  dispatch: Dispatch
+) => {
+  if ((event as any).payload.value) {
+    dispatch(showClock());
+  } else {
+    dispatch(hideClock());
   }
 };
 
@@ -66,6 +86,12 @@ const handleScoreApplicationMessage = (
     case ScoreEventApplicationMessage.CLOCK_CORRECITON:
       handleClockCorrection(event, dispatch);
       break;
+    case ScoreEventApplicationMessage.START_CLOCK:
+      dispatch(startClock());
+      break;
+    case ScoreEventApplicationMessage.STOP_CLOCK:
+      dispatch(stopClock());
+      break;
   }
 };
 
@@ -76,6 +102,9 @@ export const handleScoreControllMessage = (
   switch ((event as any).payload.control) {
     case ScoreEventControlMessages.SCORE_VISIBILITY:
       handleScoreVisibility(event, dispatch);
+      break;
+    case ScoreEventControlMessages.CLOCK_VISIBILITY:
+      handleClockVisibility(event, dispatch);
       break;
   }
 };

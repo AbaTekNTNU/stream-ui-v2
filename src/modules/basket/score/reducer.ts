@@ -15,6 +15,7 @@ export interface ScoreState {
   clock: {
     secondsRemaining: number;
     period: string;
+    running: boolean;
   };
   scoreVisible: boolean;
   clockVisible: boolean;
@@ -46,15 +47,25 @@ const initialState: ScoreState = {
   clock: {
     period: "1",
     secondsRemaining: 600,
+    running: false,
   },
   scoreVisible: true,
-  clockVisible: false,
+  clockVisible: true,
 };
 
 const scoreSlice = createSlice({
   name: "score",
   initialState,
   reducers: {
+    stopClock: (state: ScoreState) => {
+      state.clock.running = false;
+      console.log(state);
+      return state;
+    },
+    startClock: (state: ScoreState) => {
+      state.clock.running = true;
+      return state;
+    },
     correctTime: (
       state: ScoreState,
       action: PayloadAction<ClockCorrectionRequest>
@@ -62,7 +73,16 @@ const scoreSlice = createSlice({
       state.clock = {
         secondsRemaining: action.payload.secondsRemaining,
         period: action.payload.period,
+        running: state.clock.running,
       };
+      return state;
+    },
+    showClock: (state: ScoreState) => {
+      state.clockVisible = true;
+      return state;
+    },
+    hideClock: (state: ScoreState) => {
+      state.clockVisible = false;
       return state;
     },
     hideScore: (state: ScoreState) => {
@@ -81,7 +101,15 @@ const scoreSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setScore, showScore, hideScore, correctTime } =
-  scoreSlice.actions;
+export const {
+  setScore,
+  showScore,
+  hideScore,
+  correctTime,
+  stopClock,
+  startClock,
+  hideClock,
+  showClock,
+} = scoreSlice.actions;
 
 export default scoreSlice.reducer;
