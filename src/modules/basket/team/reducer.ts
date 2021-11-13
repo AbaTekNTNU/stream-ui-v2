@@ -46,10 +46,22 @@ const teamReducer = createSlice({
       state.showGameSummary = false;
       return state;
     },
+    showTeamInformation: (state: TeamState) => {
+      state.showTeamPresentation = true;
+      return state;
+    },
+    hideTeamInformation: (state: TeamState) => {
+      state.showTeamPresentation = false;
+      return state;
+    },
   },
 });
 
-export const { showGameInitialSummary, hideGameInitialSummary } =
-  teamReducer.actions;
+export const {
+  showGameInitialSummary,
+  hideGameInitialSummary,
+  showTeamInformation,
+  hideTeamInformation,
+} = teamReducer.actions;
 
 export default teamReducer.reducer;
