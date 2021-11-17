@@ -38,10 +38,10 @@ const initialState: ScoreState = {
   },
   teams: {
     home: {
-      name: "NID",
+      name: "MID",
     },
     away: {
-      name: "MID",
+      name: "TRO",
     },
   },
   clock: {

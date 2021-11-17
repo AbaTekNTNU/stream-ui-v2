@@ -19,14 +19,14 @@ type TeamState = {
 };
 const initialState: TeamState = {
   home: {
-    name: "Nidaros Jets",
-    logo: "/logos/nidaros_jets.png",
+    name: "Midtbyen basket",
+    logo: "/logos/midtbyen.png",
     players: [],
     coaches: [],
   },
   away: {
-    name: "Asker Aliens",
-    logo: "/logos/asker_aliens.png",
+    name: "Tromsø Strom Ungdom",
+    logo: "/logos/tromso_kvinner.png",
     players: [],
     coaches: [],
   },

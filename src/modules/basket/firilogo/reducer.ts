@@ -16,7 +16,7 @@ export type SetFiriLogoGenderRequest = {
 
 const initialState: FiriLogoState = {
   showLogo: true,
-  gender: FiriLogoGender.MEN,
+  gender: FiriLogoGender.WOMEN,
 };
 
 const firiLogoReducer = createSlice({

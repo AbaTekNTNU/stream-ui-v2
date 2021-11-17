@@ -35,6 +35,7 @@ export type TeamsState = {
 
 type TeamComponentProps = {
   team: TeamData;
+  name: string;
 };
 
 type TeamPresentationProps = {};
@@ -74,11 +75,11 @@ const TeamHeader: React.FC<TeamHeaderProps> = ({ name }) => {
   );
 };
 
-const TeamComponent: React.FC<TeamComponentProps> = ({ team }) => {
+const TeamComponent: React.FC<TeamComponentProps> = ({ team, name }) => {
   return (
     <div className={styles.teamPrsWrapper}>
       <div className={styles.teamNamePrsWrapper}>
-        <TeamHeader name={"Nidaros Jets"} />
+        <TeamHeader name={name} />
       </div>
 
       <div>
@@ -116,8 +117,8 @@ const TeamPresentationComponent: React.FC<TeamPresentationProps> = ({}) => {
         <img className={styles.logo} src={firiLogoToUse} />
       </div>
       <div className={styles.midContainer}>
-        <TeamComponent team={teamData.home} />
-        <TeamComponent team={teamData.away} />
+        <TeamComponent team={teamData.home} name={"Midtbyen"} />
+        <TeamComponent team={teamData.away} name={"Tromsø Strom Ungdom"} />
       </div>
       <div className={styles.basketNorgeContainer}>
         <span className={styles.basketNorgeText}>#basketnorge</span>
