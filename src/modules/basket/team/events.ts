@@ -2,9 +2,9 @@ import { Dispatch } from "redux";
 import { AbaTekStreamingEvent } from "../../../types";
 import { AbatekMessage } from "../events";
 import {
-  hideGameInitialSummary,
+  hideGameInitialSummary as hideTeamInitialSummary,
   hideTeamInformation,
-  showGameInitialSummary,
+  showTeamInitialSummary,
   showTeamInformation,
 } from "./reducer";
 
@@ -20,9 +20,9 @@ const handleGameEventControl = (
   switch ((event as any).payload.control) {
     case GameEventMessage.GAME_INITIAL_SUMMARY:
       if ((event as any).payload.value) {
-        dispatch(showGameInitialSummary());
+        dispatch(showTeamInitialSummary());
       } else {
-        dispatch(hideGameInitialSummary());
+        dispatch(hideTeamInitialSummary());
       }
       break;
     case GameEventMessage.TEAM_INFORMATION:

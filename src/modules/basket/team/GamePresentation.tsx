@@ -22,7 +22,7 @@ const TeamContainer: React.FC<TeamContainerProps> = ({ name, logo }) => {
 };
 
 const GamePresentation: React.FC = () => {
-  const teams = useSelector((state: RootState) => state.game);
+  const teams = useSelector((state: RootState) => state.team);
 
   const logoGender = useSelector((state: RootState) => state.firiLogo.gender);
   const firiLogoToUse =

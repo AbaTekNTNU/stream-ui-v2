@@ -4,14 +4,10 @@ import { RootState } from "../../../store/store";
 import GamePresentation from "./GamePresentation";
 
 const Team: React.FC = () => {
-  const showGameSummary = useSelector(
-    (state: RootState) => state.game.showGameSummary
+  const showTeamSummary = useSelector(
+    (state: RootState) => state.team.showTeamSummary
   );
 
-  if (showGameSummary) {
-    return <GamePresentation />;
-  } else {
-    return null;
-  }
+  return showTeamSummary ? <GamePresentation /> : null;
 };
 export default Team;
