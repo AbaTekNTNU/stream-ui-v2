@@ -5,7 +5,7 @@ import TeamPresentationComponent from "./component/TeamPresentationComponent";
 
 const TeamPresentation: React.FC = () => {
   const showTeamPresentation = useSelector(
-    (state: RootState) => state.game.showTeamPresentation
+    (state: RootState) => state.team.showTeamPresentation
   );
 
   return showTeamPresentation ? <TeamPresentationComponent /> : null;

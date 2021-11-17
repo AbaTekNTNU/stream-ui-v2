@@ -14,7 +14,7 @@ type TeamDetail = {
 type TeamState = {
   home: TeamDetail;
   away: TeamDetail;
-  showGameSummary: boolean;
+  showTeamSummary: boolean;
   showTeamPresentation: boolean;
 };
 const initialState: TeamState = {
@@ -30,7 +30,7 @@ const initialState: TeamState = {
     players: [],
     coaches: [],
   },
-  showGameSummary: false,
+  showTeamSummary: false,
   showTeamPresentation: true,
 };
 
@@ -38,12 +38,12 @@ const teamReducer = createSlice({
   name: "team",
   initialState,
   reducers: {
-    showGameInitialSummary: (state: TeamState) => {
-      state.showGameSummary = true;
+    showTeamInitialSummary: (state: TeamState) => {
+      state.showTeamSummary = true;
       return state;
     },
     hideGameInitialSummary: (state: TeamState) => {
-      state.showGameSummary = false;
+      state.showTeamSummary = false;
       return state;
     },
     showTeamInformation: (state: TeamState) => {
@@ -58,7 +58,7 @@ const teamReducer = createSlice({
 });
 
 export const {
-  showGameInitialSummary,
+  showTeamInitialSummary,
   hideGameInitialSummary,
   showTeamInformation,
   hideTeamInformation,

@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import scoreReducer from "../modules/basket/score/reducer";
 import firiLogoReducer from "../modules/basket/firilogo/reducer";
-import gameReducer from "./../modules/basket/team/reducer";
+import teamReducer from "./../modules/basket/team/reducer";
 
 export const store = configureStore({
   reducer: {
     score: scoreReducer,
     firiLogo: firiLogoReducer,
-    game: gameReducer,
+    team: teamReducer,
   },
 });
 
