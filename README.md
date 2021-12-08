@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Dette repositoriet er nå arkivert og read only. Bruk: https://github.com/AbaTekNTNU/streaming-graphics-v2
+
 # ABATEK stream ui frontend
 
 Mainely used for basket..
